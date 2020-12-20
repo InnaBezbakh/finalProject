@@ -9,6 +9,7 @@ public class Hooks {
     public void initDriver() {
         DriverManager.setUpDriver();
     }
+
     @After
     public void quiteBrowser() {
         DriverManager.quiteDriver();

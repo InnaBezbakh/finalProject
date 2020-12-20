@@ -32,27 +32,12 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//p[@class='alert alert-success block_newsletter_alert']")
     private WebElement successSubscriptionMessage;
 
-    //
-
-   @FindBy(xpath = "//button[@class='hidden-sm-down btn-unstyle']")
-    private WebElement openDropDown;
-
-   @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li")
-   private List<WebElement> languagesList;
-
-   //@FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li")
-   //private WebElement langItem;
-   @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li//a[text()='Українська']")
-   private WebElement ukrLangItem;
-
-
-
 
     public MainPage(){
         PageFactory.initElements(getDriver(), this);
     }
 
-    public void oenMainPage(){
+    public void openMainPage(){
         log.info("Opening main page of the web site");
         getDriver().get("https://demo.prestashop.com/");
     }
@@ -75,61 +60,16 @@ public class MainPage extends BasePage{
             return false;
         }
     }
-
-
-   // public void scrollToVisibleBlockNewsLetter(){
-       // JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        //js.executeScript("arguments[0].scrollIntoView();", blockNewsletter);
-        //waitUntilVisible(blockNewsletter, 10);
-    //}
-    /*public void scrollToVisibleBlockNewsLetter(WebElement webElement){
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", webElement);
-        waitUntilVisible(webElement, 10);
-    }*/
-
-
     public void fillAlreadyUsedEmail(String email){
-        waitUntilVisible(blockNewsletter, 10);
+        waitUntilVisible(blockNewsletter, 7);
         log.info("Finding creation subscription field for email by locator{}",emailFieldForSubscription);
         emailFieldForSubscription.sendKeys(email);
         log.info("Finding and clicking subscribe button by locator{}",buttonSubscribe);
         buttonSubscribe.click();
     }
-
-
     public String getSuccessSubscriptionMessage(){
         log.info("success subscription email appears");
          waitUntilVisible(successSubscriptionMessage, 5);
          return successSubscriptionMessage.getText();
     }
-
-    public void openLanguagesDropDownList(){
-        waitUntilVisible(openDropDown, 5).click();
-    }
-
-    //public int checkNumberOfLanguages(){
-      //  List<WebElement> elements = getDriver().findElements(By.xpath("//ul[@class='dropdown-menu hidden-sm-down']//li"));
-        //return elements.size();
-    //}
-
-    public int checkNumberOfLanguages(){
-        log.info("count the number of languages");
-        return languagesList.size();
-    }
-
-    //public String getTextUkrItem(){
-     //   waitUntilVisible(ukrLangItem, 5);
-      //  return ukrLangItem.getText();
-   // }
-    public boolean getTextUkrItem(String language){
-        log.info("check whether ukr item exists in the languages list");
-        for(int i = 0; i <languagesList.size(); i++){
-            if(languagesList.get(i).getText().equals(language)){
-                return true;
-            }
-        }
-        return false;
-    }
-
 }

@@ -9,13 +9,6 @@ import org.openqa.selenium.safari.SafariDriver;
 import pages.BasePage;
 
 public class DriverManager {
-    // кейс когда сетаплю хром
-    //public static synchronized void setUpDriver() {
-    //WebDriverManager.chromedriver().setup();
-    //WebDriver driver = new ChromeDriver();
-    //driver.manage().window().maximize();
-    //BasePage.setDriverThreadLocal(driver);
-    //}
 
     public static synchronized void setUpDriver()
     {
@@ -49,9 +42,7 @@ public class DriverManager {
     }
 
     public static void quiteDriver() {
-
         BasePage.getDriver().quit();
     }
-
 }
 

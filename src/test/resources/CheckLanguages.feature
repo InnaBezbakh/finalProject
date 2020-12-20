@@ -1,4 +1,4 @@
-Feature: Check that 44 languages exists in drop down list including ukrainian
+Feature: 44 languages exists in drop down list including ukrainian
 
   Scenario:
     Given I am on the Main page of application
